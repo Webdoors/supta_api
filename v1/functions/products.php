@@ -1,0 +1,16 @@
+<?php
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL);
+
+$q1=mysqli_query($con,"SELECT t1.* FROM products as t1");
+$r1=mysqli_fetch_all($q1,MYSQLI_ASSOC);
+if(mysqli_num_rows($q1)>0){
+$arr=["products"=>$r1];	
+}else{
+$arr=["status"=>"nothing found"];	
+}
+// var_dump($r1);
+
+$arr=json_encode($arr, JSON_UNESCAPED_UNICODE);
+echo $arr;
